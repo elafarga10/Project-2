@@ -7,12 +7,12 @@ My app is called Corona-Info. It will allow people to look up countries and will
 ## Wireframes
 
 ### Home
-![App](./Home-Page.png)
+![App](/images/Home-Page.png)
 
 
 
 ### Results
-![App](./Search-Results.png)
+![App](/images/Search-Results.png)
 
 
 ## MVP User Stories
@@ -48,4 +48,4 @@ Date: "2020-04-27T04:18:11Z"
 
 ## Component Hierarchy
 
-![App](./Components.png)
+![App](/images/Components.png)
