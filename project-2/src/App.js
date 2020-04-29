@@ -3,13 +3,14 @@ import { Route } from 'react-router-dom';
 import { Home } from './Home';
 import { NavigationBar } from './NavigationBar';
 import { Layout } from './Layout';
-import { Jumbo } from './Jumbotron';
+import { Slideshow } from './Carousel';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: null,
+			countries: null,
 		};
 	}
 
@@ -31,7 +32,7 @@ class App extends React.Component {
 		return (
 			<>
 				<NavigationBar />
-				<Jumbo></Jumbo>
+				<Slideshow />
 				<Layout>
 					<Route
 						to='/'
@@ -42,14 +43,13 @@ class App extends React.Component {
 							return <Home data={this.state.data.Global} />;
 						}}
 					/>
+					
 				</Layout>
 			</>
 		);
 	}
 }
 
-{
-	/* <h1>{this.state.data?.Countries.map(country => <p key={country.CountryCode}>{country.Country}</p>)}</h1> */
-}
+
 
 export default App;
