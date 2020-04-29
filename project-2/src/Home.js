@@ -43,9 +43,8 @@ export const Home = (props) => {
 					</Card.Body>
 				</Card>
 			</CardDeck>
-			<Search />
+			<Search countryName={props.countryName} handleChange={props.handleChange} handleSearch={props.handleSearch}/>
 		</Styles>
 	);
 };
 
-export default Home;

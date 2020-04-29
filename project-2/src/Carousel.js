@@ -42,7 +42,15 @@ const Styles = styled.div`
 export const Slideshow = () => {
 	return (
 		<Styles>
-			<Carousel as='div' pause='false'>
+			<Carousel
+				as='div'
+				pause='false'
+				prevIcon={
+					<span aria-hidden='false' className='carousel-control-prev-icon' />
+				}
+				nextIcon={
+					<span aria-hidden='true' className='carousel-control-next-icon' />
+				}>
 				<Carousel.Item>
 					<Carousel.Caption>
 						<h1>Welcome to Corona-Info</h1>

@@ -1,16 +1,19 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './Home';
 import { NavigationBar } from './NavigationBar';
 import { Layout } from './Layout';
 import { Slideshow } from './Carousel';
-
+import { Countries } from './Countries';
+import { Country } from  './Country';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: null,
 			countries: null,
+			countryName: '',
+			selectedCountry: '',
 		};
 	}
 
@@ -28,28 +31,93 @@ class App extends React.Component {
 			});
 	}
 
+	handleChange = (event) => {
+		this.setState({ countryName: event.target.value });
+	};
+
+	handleSearch = () => {
+		let temp = this.state.countries.find(country => country.Country === this.state.countryName);
+		console.log(temp)
+		// let country = this.state.countryName;
+		// let pos = this.state.countries
+		// 	.map(function (e) {
+		// 		return e.Country;
+		// 	})
+		// 	.indexOf(country);
+		// this.setState({ countries: this.state.countries[pos] });
+		// console.log(this.state.countries[pos]);
+	};
+	
+
 	render() {
 		return (
 			<>
 				<NavigationBar />
 				<Slideshow />
 				<Layout>
-					<Route
-						to='/'
-						render={() => {
-              if(!this.state.data) {
-                return null
-              }
-							return <Home data={this.state.data.Global} />;
-						}}
-					/>
-					
+					<Router>
+						<Switch>
+							<Route
+								path='/'
+								exact
+								render={() => {
+									if (!this.state.data) {
+										return null;
+									}
+									return (
+										<Home
+											data={this.state.data.Global}
+											countryName={this.state.countryName}
+											handleChange={this.handleChange}
+											handleSearch={this.handleSearch}
+										/>
+									);
+								}}
+							/>
+							<Route
+								exact
+								path='/countries/'
+								render={(routerProps) => {
+									if (!this.state.countries) {
+										return null;
+									}
+									return (
+										<Countries
+											match={routerProps.match}
+											countries={this.state.countries}
+										/>
+									);
+								}}
+							/>
+							<Route
+								exact
+								path='/countries/:name'
+								render={(routerProps) => {
+									if (!this.state.countries) {
+										return null;
+									}
+									let country = this.state.countries.find(
+										(country) =>
+											country.Country === routerProps.match.params.name
+									);
+									console.log(this.state.countries);
+									console.log(country);
+									return (
+										<Country
+											name={country.Country}
+											cases={country.TotalConfirmed}
+											deaths={country.TotalDeaths}
+											recovered={country.TotalRecovered}
+										/>
+									);
+								}}
+							/>
+						</Switch>
+					</Router>
 				</Layout>
 			</>
 		);
 	}
 }
-
-
 
 export default App;
