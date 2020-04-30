@@ -15,7 +15,8 @@ const Styles = styled.div`
 	}
 
 	* {
-		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
 	}
 
 	@media (min-width: 900px) {

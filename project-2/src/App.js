@@ -5,7 +5,7 @@ import { NavigationBar } from './NavigationBar';
 import { Layout } from './Layout';
 import { Slideshow } from './Carousel';
 import { Countries } from './Countries';
-import { Country } from  './Country';
+import { Country } from './Country';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -36,18 +36,13 @@ class App extends React.Component {
 	};
 
 	handleSearch = () => {
-		let temp = this.state.countries.find(country => country.Country === this.state.countryName);
-		console.log(temp)
-		// let country = this.state.countryName;
-		// let pos = this.state.countries
-		// 	.map(function (e) {
-		// 		return e.Country;
-		// 	})
-		// 	.indexOf(country);
-		// this.setState({ countries: this.state.countries[pos] });
-		// console.log(this.state.countries[pos]);
+		let temp = this.state.countries.find(
+			(country) =>
+				country.Country.toLowerCase().split(' ').join('') ===
+				this.state.countryName.toLowerCase().split(' ').join('')
+		);
+		console.log(temp);
 	};
-	
 
 	render() {
 		return (
@@ -98,7 +93,11 @@ class App extends React.Component {
 									}
 									let country = this.state.countries.find(
 										(country) =>
-											country.Country === routerProps.match.params.name
+											country.Country.toLowerCase().split(' ').join('') ===
+											routerProps.match.params.name
+												.toLowerCase()
+												.split(' ')
+												.join('')
 									);
 									console.log(this.state.countries);
 									console.log(country);

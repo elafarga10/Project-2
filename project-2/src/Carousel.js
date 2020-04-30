@@ -53,7 +53,7 @@ export const Slideshow = () => {
 				}>
 				<Carousel.Item>
 					<Carousel.Caption>
-						<h1>Welcome to Corona-Info</h1>
+						<h1>Welcome to CV Tracker</h1>
 						<p>Search by country for corona-virus information</p>
 					</Carousel.Caption>
 					<div className='overlay'></div>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
 	.navbar {
-        background-color: #225;
+        background-color: #000;
         height: 85px;
 	}
 	a,
@@ -20,7 +20,7 @@ const Styles = styled.div`
 export const NavigationBar = () => (
 	<Styles>
 		<Navbar expand='lg'>
-			<Navbar.Brand href='/'>Corona-Info</Navbar.Brand>
+			<Navbar.Brand href='/'>CV Tracker</Navbar.Brand>
 			<Navbar.Toggle aria-controls='basic-navbar' />
 			<Navbar.Collapse id='basic-navbar-nav'>
 				<Nav className='ml-auto'>
