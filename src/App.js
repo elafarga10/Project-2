@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import { Home } from './Home';
 import { NavigationBar } from './NavigationBar';
 import { Layout } from './Layout';
@@ -45,10 +45,9 @@ class App extends React.Component {
 	}
 
 	handleKeyPress = (event) => {
-		console.log(this.state.countryName, event.key)
+		console.log()
 		if (event.key.toLowerCase() === 'enter') {
-			// window.location.assign(`/countries/${this.state.countryName}`);
-			window.location = `/countries/${this.state.countryName}`;
+			this.props.history.push(`/countries/${this.state.countryName}`);
 		}
 	}
 
@@ -104,6 +103,7 @@ class App extends React.Component {
 												countryName={this.state.countryName}
 												handleChange={this.handleChange}
 												clearButton={this.clearButton}
+												handleKeyPress={this.handleKeyPress}
 											/>
 										);
 									} else {
@@ -112,6 +112,7 @@ class App extends React.Component {
 												countryName={this.state.countryName}
 												handleChange={this.handleChange}
 												clearButton={this.clearButton}
+												handleKeyPress={this.handleKeyPress}
 											/>
 										);
 									}
@@ -126,6 +127,7 @@ class App extends React.Component {
 											countryName={this.state.countryName}
 											handleChange={this.handleChange}
 											clearButton={this.clearButton}
+											handleKeyPress={this.handleKeyPress}
 										/>
 									);
 								}}
@@ -138,4 +140,4 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+export default withRouter(App);
