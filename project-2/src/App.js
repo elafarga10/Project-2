@@ -40,10 +40,6 @@ class App extends React.Component {
 		}
 	};
 
-	clearButton = (input) => {
-		return (input.target.value = '');
-	};
-
 	render() {
 		return (
 			<>
@@ -82,24 +78,35 @@ class App extends React.Component {
 											country.Country.toLowerCase() ===
 											routerProps.match.params.name.toLowerCase()
 									);
-									return (
-										<Country
-											name={country.Country}
-											cases={country.TotalConfirmed}
-											deaths={country.TotalDeaths}
-											recovered={country.TotalRecovered}
-											newCases={country.NewConfirmed}
-											newDeaths={country.NewDeaths}
-											newRecovered={country.NewRecovered}
-											countryName={this.state.countryName}
-											handleChange={this.handleChange}
-										/>
-									);
+									if (country) {
+										return (
+											<Country
+												name={country.Country}
+												cases={country.TotalConfirmed}
+												deaths={country.TotalDeaths}
+												recovered={country.TotalRecovered}
+												newCases={country.NewConfirmed}
+												newDeaths={country.NewDeaths}
+												newRecovered={country.NewRecovered}
+												countryName={this.state.countryName}
+												handleChange={this.handleChange}
+											/>
+										);
+									} else {
+										return <NoMatch />;
+									}
 								}}
 							/>
 							<Route path='/about' component={About} />
 							<Route path='/donate' component={Donate} />
-							<Route component={NoMatch} />
+							<Route
+								render={() => {
+									return <NoMatch
+										countryName={this.state.countryName}
+										handleChange={this.handleChange}
+									/>
+								}}
+							/>
 						</Switch>
 					</Router>
 				</Layout>
