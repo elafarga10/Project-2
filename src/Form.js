@@ -37,6 +37,7 @@ export const Search = (props) => {
 						type='text'
 						placeholder='Search by country'
 						value={props.countryName}
+						onKeyPress={props.handleKeyPress}
 					/>
 					<InputGroup.Append>
 						<Button

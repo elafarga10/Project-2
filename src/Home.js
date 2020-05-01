@@ -48,6 +48,7 @@ export const Home = (props) => {
 				handleChange={props.handleChange}
 				resetState={props.resetState}
 				clearButton={props.clearButton}
+				handleKeyPress={props.handleKeyPress}
 			/>
 		</Styles>
 	);

@@ -86,6 +86,7 @@ export const Country = (props) => {
 					countryName={props.countryName}
 					handleChange={props.handleChange}
 					resetState={props.resetState}
+					clearButton={props.clearButton}
 				/>
 			</Styles>
 		</div>

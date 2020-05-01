@@ -8,6 +8,7 @@ export const NoMatch = (props) => (
 							className='search'
 							countryName={props.countryName}
 							handleChange={props.handleChange}
+							clearButton={props.clearButton}
 						/>
 					</div>
 				);

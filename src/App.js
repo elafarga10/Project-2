@@ -40,8 +40,16 @@ class App extends React.Component {
 		}
 	};
 
-	clearButton = (input) => {
-		input.target.value = '';
+	clearButton = () => {
+		this.setState({countryName: ''})
+	}
+
+	handleKeyPress = (event) => {
+		console.log(this.state.countryName, event.key)
+		if (event.key.toLowerCase() === 'enter') {
+			// window.location.assign(`/countries/${this.state.countryName}`);
+			window.location = `/countries/${this.state.countryName}`;
+		}
 	}
 
 	render() {
@@ -66,6 +74,7 @@ class App extends React.Component {
 											handleChange={this.handleChange}
 											resetState={this.resetState}
 											clearButton={this.clearButton}
+											handleKeyPress={this.handleKeyPress}
 										/>
 									);
 								}}
@@ -94,21 +103,31 @@ class App extends React.Component {
 												newRecovered={country.NewRecovered}
 												countryName={this.state.countryName}
 												handleChange={this.handleChange}
+												clearButton={this.clearButton}
 											/>
 										);
 									} else {
-										return <NoMatch />;
+										return (
+											<NoMatch
+												countryName={this.state.countryName}
+												handleChange={this.handleChange}
+												clearButton={this.clearButton}
+											/>
+										);
 									}
 								}}
 							/>
 							<Route path='/about' component={About} />
 							<Route path='/donate' component={Donate} />
-							<Route
+							<Route path='/*'
 								render={() => {
-									return <NoMatch
-										countryName={this.state.countryName}
-										handleChange={this.handleChange}
-									/>
+									return (
+										<NoMatch
+											countryName={this.state.countryName}
+											handleChange={this.handleChange}
+											clearButton={this.clearButton}
+										/>
+									);
 								}}
 							/>
 						</Switch>
