@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, InputGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import styled from 'styled-components';
 
@@ -30,17 +30,28 @@ export const Search = (props) => {
 	return (
 		<Styles>
 			<Form className='search-bar'>
-				<Form.Control
-					onChange={props.handleChange}
-					size='md'
-					type='text'
-					placeholder='Search by country'
-					value={props.countryName}
-				/>
-
-				<LinkContainer to={`/countries/${props.countryName}`}>
-					<Button onClick={props.handleSearch}>Search</Button>
-				</LinkContainer>
+				<InputGroup>
+					<Form.Control
+						onChange={props.handleChange}
+						size='md'
+						type='text'
+						placeholder='Search by country'
+						value={props.countryName}
+					/>
+					<InputGroup.Append>
+						<Button
+							type='reset'
+							variant='outline-secondary'
+							onClick={props.clearButton}>
+							X
+						</Button>
+					</InputGroup.Append>
+					<InputGroup.Append>
+						<LinkContainer to={`/countries/${props.countryName}`}>
+							<Button onClick={props.resetState}>Search</Button>
+						</LinkContainer>
+					</InputGroup.Append>
+				</InputGroup>
 			</Form>
 		</Styles>
 	);

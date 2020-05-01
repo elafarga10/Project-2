@@ -4,19 +4,19 @@ import { Search } from './Form';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-    .stats{
-        display: flex;
-        margin: ;
-        justify-content: space-between;
-    }
-    .global {
-        text-align: center;
+	.stats {
+		display: flex;
+		margin: ;
+		justify-content: space-between;
+	}
+	.global {
+		text-align: center;
 		padding-bottom: 50px;
 		padding-top: 50px;
-    }
-    .total {
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+	}
+	.total {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
 `;
 
 export const Home = (props) => {
@@ -43,8 +43,12 @@ export const Home = (props) => {
 					</Card.Body>
 				</Card>
 			</CardDeck>
-			<Search countryName={props.countryName} handleChange={props.handleChange} handleSearch={props.handleSearch}/>
+			<Search
+				countryName={props.countryName}
+				handleChange={props.handleChange}
+				resetState={props.resetState}
+				clearButton={props.clearButton}
+			/>
 		</Styles>
 	);
 };
-

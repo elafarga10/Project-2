@@ -22,6 +22,10 @@ const Styles = styled.div`
 		right: 0;
 	}
 
+	.carousel-icon li {
+		display: none;
+	}
+
 	@media (min-width: 900px) {
 		.carousel {
 			width: 100%;
@@ -45,12 +49,8 @@ export const Slideshow = () => {
 			<Carousel
 				as='div'
 				pause='false'
-				prevIcon={
-					<span aria-hidden='false' className='carousel-control-prev-icon' />
-				}
-				nextIcon={
-					<span aria-hidden='true' className='carousel-control-next-icon' />
-				}>
+				prevIcon={<span aria-hidden='true' className='carousel-icon' />}
+				nextIcon={<span aria-hidden='true' className='carousel-icon' />}>
 				<Carousel.Item>
 					<Carousel.Caption>
 						<h1>Welcome to CV Tracker</h1>
