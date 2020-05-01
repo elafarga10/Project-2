@@ -40,6 +40,10 @@ class App extends React.Component {
 		}
 	};
 
+	clearButton = (input) => {
+		input.target.value = '';
+	}
+
 	render() {
 		return (
 			<>
