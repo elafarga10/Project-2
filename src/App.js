@@ -1,12 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	withRouter,
+} from 'react-router-dom';
 import { Home } from './Home';
 import { NavigationBar } from './NavigationBar';
 import { Layout } from './Layout';
 import { Slideshow } from './Carousel';
 import { Country } from './Country';
 import { NoMatch } from './NoMatch';
-import { About } from './About';
+import { Countries } from './Countries';
 import { Donate } from './Donate';
 class App extends React.Component {
 	constructor(props) {
@@ -41,15 +46,15 @@ class App extends React.Component {
 	};
 
 	clearButton = () => {
-		this.setState({countryName: ''})
-	}
+		this.setState({ countryName: '' });
+	};
 
 	handleKeyPress = (event) => {
-		console.log()
+		console.log();
 		if (event.key.toLowerCase() === 'enter') {
 			this.props.history.push(`/countries/${this.state.countryName}`);
 		}
-	}
+	};
 
 	render() {
 		return (
@@ -118,9 +123,15 @@ class App extends React.Component {
 									}
 								}}
 							/>
-							<Route path='/about' component={About} />
+							<Route exact path='/list' render={() => {
+									if (!this.state.countries) {
+										return null;
+									}
+								return <Countries countries={this.state.countries}/>
+							}} />
 							<Route path='/donate' component={Donate} />
-							<Route path='/*'
+							<Route
+								path='/*'
 								render={() => {
 									return (
 										<NoMatch

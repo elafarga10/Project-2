@@ -41,8 +41,8 @@ export const NavigationBar = () => (
 						</Button>
 					</Nav.Item>
 					<Nav.Item className='item'>
-						<Button variant='outline-light' href='/about'>
-							About
+						<Button variant='outline-light' href='/list'>
+							Countries
 						</Button>
 					</Nav.Item>
 					<Nav.Item className='item'>
