@@ -12,7 +12,7 @@ import { Slideshow } from './Carousel';
 import { Country } from './Country';
 import { NoMatch } from './NoMatch';
 import { Countries } from './Countries';
-import { Donate } from './Donate';
+import { Info } from './Info';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -20,7 +20,6 @@ class App extends React.Component {
 			data: null,
 			countries: null,
 			countryName: '',
-			searchCountry: '',
 		};
 	}
 
@@ -138,7 +137,7 @@ class App extends React.Component {
 									return <Countries countries={this.state.countries} />;
 								}}
 							/>
-							<Route path='/donate' component={Donate} />
+							<Route path='/info' component={Info} />
 							<Route
 								path='/*'
 								render={() => {

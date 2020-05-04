@@ -46,8 +46,8 @@ export const NavigationBar = () => (
 						</Button>
 					</Nav.Item>
 					<Nav.Item className='item'>
-						<Button variant='outline-light' href='/donate'>
-							Donate
+						<Button variant='outline-light' href='/info'>
+							Info
 						</Button>
 					</Nav.Item>
 				</Nav>
