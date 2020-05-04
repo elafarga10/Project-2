@@ -20,6 +20,7 @@ class App extends React.Component {
 			data: null,
 			countries: null,
 			countryName: '',
+			searchCountry: '',
 		};
 	}
 
@@ -55,6 +56,10 @@ class App extends React.Component {
 			this.props.history.push(`/countries/${this.state.countryName}`);
 		}
 	};
+
+
+
+	
 
 	render() {
 		return (
@@ -123,12 +128,16 @@ class App extends React.Component {
 									}
 								}}
 							/>
-							<Route exact path='/list' render={() => {
+							<Route
+								exact
+								path='/list'
+								render={() => {
 									if (!this.state.countries) {
 										return null;
 									}
-								return <Countries countries={this.state.countries}/>
-							}} />
+									return <Countries countries={this.state.countries} />;
+								}}
+							/>
 							<Route path='/donate' component={Donate} />
 							<Route
 								path='/*'
